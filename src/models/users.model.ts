@@ -1,19 +1,12 @@
 
 import db from '../config/database';
+import { User } from '../interfaces/user.interface';
 
-export interface User {
-  id?: number;
-  name: string;
-  email: string;
-  wallet_balance?: number;
-  password?: string;
-  created_at?: Date;
-  updated_at?: Date;
-}
 
 export const UserModel = {
   async create(user: User): Promise<User> {
-    const [id] = await db('users').insert(user);
+    const result = await db('users').insert(user);
+    const [id] = Array.isArray(result) ? result : [result];
     return { id, ...user };
   },
 
