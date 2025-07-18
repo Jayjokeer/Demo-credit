@@ -1,19 +1,20 @@
 import express from "express";
-import dotenv from 'dotenv';
 import AppError from "./errors/error";
 import globalErrorHandler from "./errors/error-handler";
 import router from "./routes/index.routes";
-dotenv.config();
+import './config/config';
+
 const PORT = process.env.PORT;
 
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use('/api/v1', router);
-app.all('*', (req, res, next) => {
+app.all('/*splat', (req, res, next) => {
   next(new AppError(`Cannot find ${req.originalUrl} on this server`, 404)); 
 });
-
 app.use(globalErrorHandler); 
 
 app.listen(PORT, () => {

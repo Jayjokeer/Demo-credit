@@ -6,7 +6,9 @@ export const successResponse = (
     data?: any,
   ) => {
     return res.status(statusCode).json({
-      message: "success",
+      message: "Successful",
+      code: statusCode,
+      status: "success",
       data,
     });
   };

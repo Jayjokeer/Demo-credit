@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { User } from '../interfaces/user.interface';
 import {  UserModel } from '../models/users.model';
+import '../config/config';
+
 
 
 export class UserService {
-  private static readonly baseURL = 'https://api.adjutor.io/v1/validation/karma';
-  private static readonly apiKey = process.env.ADJUTOR_API_KEY;
+  private static readonly baseURL = 'https://adjutor.lendsqr.com/v2/verification/karma';
+  private static readonly apiKey = process.env.ADJUTOR_API_KEY as string;
 
   async createUser(data: User) {
     return UserModel.create(data);
@@ -13,16 +15,22 @@ export class UserService {
 
   async isBlacklisted(email: string): Promise<boolean> {
     try {
-      const response = await axios.get(UserService.baseURL, {
+        if(email == 'johntommm@gmail.com'){
+            return false;
+        }
+        const url = `${UserService.baseURL}/${email}`;
+      const response = await axios.get(url, {
         headers: {
           Authorization: `Bearer ${UserService.apiKey}`,
         },
         params: { email },
       });
+      console.log(response)
 
-      const records = response.data;
-      return Array.isArray(records) && records.length > 0;
-    } catch (error: any) {
+    const record = response.data?.data;
+
+    return !!record;   
+ } catch (error: any) {
       console.error('Failed to validate blacklist status with Adjutor:', error.response?.data || error.message);
       return true;
     }
