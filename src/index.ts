@@ -2,9 +2,8 @@ import express from "express";
 // import { router } from './routes';
 // import { errorHandler } from './middleware/errorHandler';
 import dotenv from 'dotenv';
-const PORT = process.env.PORT;
-
 dotenv.config();
+const PORT = process.env.PORT;
 
 const app = express();
 
