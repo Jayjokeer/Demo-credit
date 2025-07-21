@@ -10,7 +10,8 @@ const config: Knex.Config = {
         password: process.env.DATABASE_PASSWORD,    
         database: process.env.DATABASE_NAME,  
     },  migrations: {   
-         directory: './migrations',  
-        },
-    };
+         directory: './src/migrations',  
+            extension: 'ts',
+            },
+        };
 export default config;

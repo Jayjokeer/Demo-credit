@@ -4,18 +4,17 @@ import db from '../config/database';
 import { WalletModel } from '../models/wallet.model'; 
 import { TransactionStatus, TransactionType } from '../enums/transaction.enum';
 import { BadRequestError, NotFoundError } from '../errors/error';
-import { UserModel } from '../models/users.model';
 
 export class TransactionService {
- static async logTransaction(txn: Transaction) {
+  async logTransaction(txn: Transaction) {
     return TransactionModel.create(txn);
   }
 
-  static async getWalletTransactions(walletId: number) {
+  async getWalletTransactions(walletId: number) {
     return TransactionModel.findByWallet(walletId);
   }
 
-  static async fundWallet(userId: number, amount: number) {
+  async fundWallet(userId: number, amount: number) {
     const wallet = await WalletModel.findByUserId(userId);
 
     return db.transaction(async (trx) => {
@@ -32,7 +31,7 @@ export class TransactionService {
     });
   }
 
-  static async withdrawFromWallet(userId: number, amount: number) {
+  async withdrawFromWallet(userId: number, amount: number) {
     const wallet = await WalletModel.findByUserId(userId);
     if (wallet.balance < amount) throw new BadRequestError('Insufficient funds');
 
@@ -50,7 +49,7 @@ export class TransactionService {
     });
   }
 
-  static async transferFunds(senderUserId: number, receiverUserId: number, amount: number) {
+  async transferFunds(senderUserId: number, receiverUserId: number, amount: number) {
     const senderWallet = await WalletModel.findByUserId(senderUserId);
     const receiverWallet = await WalletModel.findByUserId(receiverUserId);
     if (senderWallet.balance < amount) throw new BadRequestError('Insufficient funds');

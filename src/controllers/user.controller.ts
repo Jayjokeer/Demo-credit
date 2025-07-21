@@ -3,6 +3,7 @@ import   {UserService } from '../services/users.services';
 import { successResponse } from '../utilities/success-response';
 import { StatusCodes } from 'http-status-codes';
 import { BadRequestError, ForbiddenError, NotFoundError } from '../errors/error';
+import { hashPassword } from '../utilities/encryption';
 
 export class UserController {
   private userService = new UserService();
@@ -17,7 +18,8 @@ export class UserController {
     if (isUserExists) {
       throw new BadRequestError("User with this email already exists!");
     };
-    const user = await this.userService.createUser(req.body);
+    const hashedPwd =  await hashPassword(req.body.password);
+    const user = await this.userService.createUser({...req.body, password: hashedPwd});
 
     return successResponse(res, StatusCodes.CREATED, user);
   }
@@ -28,6 +30,4 @@ export class UserController {
     return successResponse(res, StatusCodes.OK, user);
 
   }
-
-
 }
