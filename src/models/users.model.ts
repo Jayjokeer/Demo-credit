@@ -4,11 +4,10 @@ import { User } from '../interfaces/user.interface';
 
 
 export const UserModel = {
-  async create(user: User): Promise<User> {
-    const result = await db('users').insert(user);
-    const [id] = Array.isArray(result) ? result : [result];
-    return { id, ...user };
-  },
+async create(user: User): Promise<User> {
+  const [id] = await db('users').insert(user); 
+  return { ...user, id: String(id) }; 
+},
 
   async findById(id: number): Promise<User | undefined> {
     return db('users').where({ id }).first();

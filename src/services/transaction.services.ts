@@ -3,15 +3,16 @@ import { TransactionModel } from '../models/transaction.model';
 import db from '../config/database';
 import { WalletModel } from '../models/wallet.model'; 
 import { TransactionStatus, TransactionType } from '../enums/transaction.enum';
-import { BadRequestError } from '../errors/error';
+import { BadRequestError, NotFoundError } from '../errors/error';
+import { UserModel } from '../models/users.model';
 
 export class TransactionService {
-  async logTransaction(txn: Transaction) {
+ static async logTransaction(txn: Transaction) {
     return TransactionModel.create(txn);
   }
 
-  async getWalletTransactions(wallet_id: number) {
-    return TransactionModel.findByWallet(wallet_id);
+  static async getWalletTransactions(walletId: number) {
+    return TransactionModel.findByWallet(walletId);
   }
 
   static async fundWallet(userId: number, amount: number) {
