@@ -8,12 +8,4 @@ export class WalletService {
     }
     return wallet;
   }
-
-  async addFunds(walletId: number, amount: number) {
-    await WalletModel.incrementBalance(walletId, amount);
-  }
-
-  async deductFunds(walletId: number, amount: number) {
-    await WalletModel.decrementBalance(walletId, amount);
-  }
 }

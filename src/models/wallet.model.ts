@@ -1,26 +1,22 @@
 import db from '../config/database';
-import { Wallet } from '../interfaces/wallet.interface';
-
+import { BadRequestError } from '../errors/error';
 
 export const WalletModel = {
-  async create(wallet: Wallet): Promise<Wallet> {
-    const [id] = await db('wallets').insert(wallet);
-    return { id, ...wallet };
+  async create(data: { user_id: number }) {
+    return db('wallets').insert({ ...data, balance: 0 }).returning('*').then(res => res[0]);
   },
 
-  async findByUserId(user_id: number): Promise<Wallet | undefined> {
-    return db('wallets').where({ user_id }).first();
+  async findByUserId(userId: number) {
+    return db('wallets').where({ user_id: userId }).first();
   },
 
-  async updateBalance(id: number, newBalance: number): Promise<void> {
-    await db('wallets').where({ id }).update({ balance: newBalance });
+  async incrementBalanceByUserId(userId: number, amount: number) {
+    return db('wallets').where({ user_id: userId }).increment('balance', amount);
   },
 
-  async incrementBalance(id: number, amount: number): Promise<void> {
-    await db('wallets').where({ id }).increment('balance', amount);
-  },
-
-  async decrementBalance(id: number, amount: number): Promise<void> {
-    await db('wallets').where({ id }).decrement('balance', amount);
-  },
+  async decrementBalanceByUserId(userId: number, amount: number) {
+    const wallet = await db('wallets').where({ user_id: userId }).first();
+    if (!wallet || wallet.balance < amount) throw new BadRequestError('Insufficient funds');
+    return db('wallets').where({ user_id: userId }).decrement('balance', amount);
+  }
 };

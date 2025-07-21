@@ -1,5 +1,7 @@
 import { Knex } from 'knex';
-import './config/config';
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 const config: Knex.Config = {  
     client: 'mysql2',  
@@ -8,7 +10,7 @@ const config: Knex.Config = {
         password: process.env.DATABASE_PASSWORD,    
         database: process.env.DATABASE_NAME,  
     },  migrations: {   
-         directory: './src/migrations',  
+         directory: './migrations',  
         },
     };
 export default config;

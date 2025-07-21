@@ -1,3 +1,4 @@
+import { knex } from 'knex';
 import db from '../config/database';
 import { Transaction } from '../interfaces/transaction.interface';
 
@@ -10,6 +11,9 @@ export const TransactionModel = {
   },
 
   async findByWallet(wallet_id: number): Promise<Transaction[]> {
-    return db('transactions').where({ wallet_id }).orderBy('created_at', 'desc');
+    return db('transactions')
+      .where('sender_wallet_id', wallet_id)
+      .orWhere('receiver_wallet_id', wallet_id)
+      .orderBy('created_at', 'desc');
   },
 };

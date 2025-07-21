@@ -1,4 +1,5 @@
- require('./config/config');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
   development: {

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import   {UserService } from '../services/users.services';
 import { successResponse } from '../utilities/success-response';
 import { StatusCodes } from 'http-status-codes';
-import { ForbiddenError, NotFoundError } from '../errors/error';
+import { BadRequestError, ForbiddenError, NotFoundError } from '../errors/error';
 
 export class UserController {
   private userService = new UserService();
@@ -12,6 +12,10 @@ export class UserController {
     const isBlacklisted = await this.userService.isBlacklisted(email);
     if(isBlacklisted){
         throw new ForbiddenError("Your account has been blacklisted and cannot continue with onboarding!")
+    };
+    const isUserExists = await this.userService.getUserByEmail(email);
+    if (isUserExists) {
+      throw new BadRequestError("User with this email already exists!");
     };
     const user = await this.userService.createUser(req.body);
 

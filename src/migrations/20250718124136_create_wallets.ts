@@ -1,14 +1,14 @@
 import { Knex } from 'knex';
 
-export async function up(knex: Knex) {
-  return knex.schema.createTable("wallets", (table) => {
-    table.increments("id").primary();
-    table.integer("userId").unsigned().references("id").inTable("users");
-    table.decimal("balance", 10, 2).defaultTo(0);
+export async function up(knex: Knex): Promise<void> {
+  await knex.schema.createTable('wallets', (table) => {
+    table.increments('id').primary();
+    table.integer('user_id').unsigned().notNullable().references('id').inTable('users').onDelete('CASCADE');
+    table.decimal('balance', 14, 2).notNullable().defaultTo(0.00);
     table.timestamps(true, true);
   });
 }
 
-export async function down(knex: Knex) {
-  return knex.schema.dropTable("wallets");
+export async function down(knex: Knex): Promise<void> {
+  await knex.schema.dropTableIfExists('wallets');
 }
