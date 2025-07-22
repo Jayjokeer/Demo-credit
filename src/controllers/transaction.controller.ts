@@ -24,7 +24,7 @@ export class TransactionController {
         const userId = req.user.id;
         const { amount } = req.body;
         const result = await this.transactionService.withdrawFromWallet(userId, amount);
-        return successResponse(res, StatusCodes.OK, result);
+      return successResponse(res, StatusCodes.OK, result);
   }
 };
 

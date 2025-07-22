@@ -3,7 +3,7 @@ import { BadRequestError } from '../errors/error';
 
 export const WalletModel = {
   async create(data: { user_id: number }) {
-    return db('wallets').insert({ ...data, balance: 0 }).returning('*').then(res => res[0]);
+    return db('wallets').insert({ ...data, balance: 0 }).then(res => res[0]);
   },
 
   async findByUserId(userId: number) {

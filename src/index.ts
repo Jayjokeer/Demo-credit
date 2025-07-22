@@ -17,6 +17,10 @@ app.all('/*splat', (req, res, next) => {
 });
 app.use(globalErrorHandler); 
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+export default app; 
