@@ -9,9 +9,6 @@ export const transferFundsSchema = Joi.object({
   amount: Joi.number().positive().required(),
 });
 
-export const getUserTransactionsSchema = Joi.object({
-  walletId: Joi.number().integer().required(),
-});
 
 export const withdrawFromWalletSchema = Joi.object({
   amount: Joi.number().positive().required(),

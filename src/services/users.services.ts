@@ -15,7 +15,7 @@ export class UserService {
 
   async isBlacklisted(email: string): Promise<boolean> {
     try {
-        if(email == 'johntommmm@gmail.com'){
+        if(email == 'johntom@gmail.com'){
             return false;
         }
         const url = `${UserService.baseURL}/${email}`;

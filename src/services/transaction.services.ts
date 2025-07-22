@@ -10,10 +10,6 @@ export class TransactionService {
     return TransactionModel.create(txn);
   }
 
-  async getWalletTransactions(walletId: number) {
-    return TransactionModel.findByWallet(walletId);
-  }
-
   async fundWallet(userId: number, amount: number) {
     const wallet = await WalletModel.findByUserId(userId);
 
@@ -68,7 +64,7 @@ export class TransactionService {
 
       return {
         senderBalance: senderWallet.balance - amount,
-        receiverBalance: receiverWallet.balance + amount,
+        receiverBalance: Number(receiverWallet.balance) + amount,
       };
     });
   }

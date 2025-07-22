@@ -4,7 +4,7 @@ import { successResponse } from '../utilities/success-response';
 import { StatusCodes } from 'http-status-codes';
 
 export class TransactionController {
-  private transactionService = new TransactionService();
+  private readonly transactionService = new TransactionService();
   async fundWallet(req: Request, res: Response) {
       const userId = req.user?.id;
       const { amount } = req.body;
@@ -19,12 +19,6 @@ export class TransactionController {
       const result = await this.transactionService.transferFunds(senderId, receiverId, amount);
     return successResponse(res, StatusCodes.OK, result);
   }
-
-  async getUserTransactions(req: Request, res: Response) {
-      const {walletId} = req.body;
-      const transactions = await this.transactionService.getWalletTransactions(walletId);
-      return successResponse(res, StatusCodes.OK, transactions);
-    }
 
     async withdrawFromWallet(req: Request, res: Response) {
         const userId = req.user.id;

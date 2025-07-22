@@ -6,6 +6,3 @@ export const createUserSchema = Joi.object({
   email: Joi.string().email().required(),
 });
 
-export const getUserByIdSchema = Joi.object({
-  id: Joi.number().integer().required(),
-});
