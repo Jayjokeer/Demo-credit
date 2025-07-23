@@ -1,6 +1,3 @@
-
-
-```markdown
 # Demo-credit
 
 Demo-credit is a backend service for a lending platform, built with TypeScript, Express, Knex.js, and MySQL. It provides a robust API for managing user accounts, wallet balances, and transactions, showcasing a scalable and maintainable Node.js application.
@@ -36,7 +33,7 @@ Demo-credit powers a lending platform, enabling users to create accounts, manage
 - Environment-based configuration with `.env` support.
 
 ## Prerequisites
-- **Node.js**: Version 14.x or higher
+- **Node.js**: Version 18.x or higher
 - **MySQL**: Version 8.0 or higher
 - **npm**: Version 6.x or higher
 - **TypeScript**: Version 4.x or higher
@@ -77,7 +74,7 @@ Replace `your_username` and `your_password` with your MySQL credentials.
 Ensure your MySQL database is running, then apply the schema migrations to create the necessary tables (`users`, `wallets`, `transactions`).
 
 ```bash
-npx knex migrate:latest
+npm run migrate
 ```
 
 ### Step 5: Build the Project
@@ -121,10 +118,10 @@ Below are examples of API requests using `curl`. All authenticated endpoints req
   ```bash
   curl -X POST http://localhost:3000/user/create-user \
   -H "Content-Type: application/json" \
-  -d '{"email": "user@example.com", "name": "John Doe"}'
+  -d '{"email": "user@example.com", "name": "John Doe", "password": "your_password"}'
   ```
 
-- **Get User by ID**:
+- **Get User**:
   Retrieve the authenticated user’s details.
 
   ```bash
