@@ -112,6 +112,11 @@ Run the compiled JavaScript code for production.
 ```bash
 npm start
 ```
+#### Running Tests
+Run unit and integration tests to validate functionality using Jest.
+```bash
+npm run test
+```
 
 ### Example API Calls
 Below are examples of API requests using `curl`. All authenticated endpoints require the `x-user-id` header for mock authentication.
