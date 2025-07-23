@@ -221,6 +221,7 @@ The Entity-Relationship (ER) Diagram illustrates the database schema, created us
   - `id`: Integer, Primary Key, Auto-increment
   - `email`: Varchar(255), Unique, Not Null
   - `name`: Varchar(255), Not Null
+  - `password`: Varchar(255), Not Null
   - `created_at`: Timestamp, Not Null, Default CURRENT_TIMESTAMP
   - `updated_at`: Timestamp, Not Null, Default CURRENT_TIMESTAMP
   - **Description**: Stores user account information.
