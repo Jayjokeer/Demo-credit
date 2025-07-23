@@ -205,7 +205,7 @@ The project is organized as follows:
 The Entity-Relationship (ER) Diagram illustrates the database schema, created using [DB Designer](https://app.dbdesigner.net), a web-based tool for designing MySQL schemas.
 
 ### ER Diagram
-![ER Diagram](assets/images/er-diagram.png)
+![ER Diagram](<img width="998" height="324" alt="image" src="https://github.com/user-attachments/assets/ecbed141-6e68-41ae-9b5c-02d4307fd81c" />)
 
 **Entities and Fields**:
 - **Users Table**:
@@ -239,23 +239,7 @@ The Entity-Relationship (ER) Diagram illustrates the database schema, created us
 - **One-to-One**: Each `user` has one `wallet` (`wallets.user_id` → `users.id`).
 - **One-to-Many**: A `wallet` can be involved in multiple `transactions` as `sender_wallet_id` or `receiver_wallet_id`.
 
-**Generating the ER Diagram**:
-1. Navigate to [DB Designer](https://app.dbdesigner.net) and sign in or use guest mode. Note: After August 1, 2024, use [erd.dbdesigner.net](https://erd.dbdesigner.net) due to deprecation.
-2. Create a new project and select MySQL as the database engine.
-3. Add the `users`, `wallets`, and `transactions` tables with the fields listed above.
-4. Define relationships:
-   - Connect `wallets.user_id` to `users.id` (1:1).
-   - Connect `transactions.sender_wallet_id` and `transactions.receiver_wallet_id` to `wallets.id` (1:N, nullable).
-5. Export the diagram as a PNG:
-   - Click the export button in DB Designer.
-   - Save to `assets/images/er-diagram.png` in the repository.
-6. Optionally, export the MySQL schema using DB Designer’s SQL export feature.
-7. Commit the diagram to the repository:
-   ```bash
-   git add assets/images/er-diagram.png
-   git commit -m "Add ER diagram"
-   git push origin main
-   ```
+
 
 ## API Reference
 
