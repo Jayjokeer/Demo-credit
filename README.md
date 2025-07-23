@@ -262,7 +262,7 @@ The API supports user and transaction management with the following endpoints:
     ```bash
     curl -X POST http://localhost:3000/user/create-user \
     -H "Content-Type: application/json" \
-    -d '{"email": "user@example.com", "name": "John Doe"}'
+    -d '{"email": "user@example.com", "name": "John Doe", "password": "your_password"}'
     ```
 
 - **GET /user**:
