@@ -66,6 +66,8 @@ DATABASE_USER=your_username
 DATABASE_PASSWORD=your_password
 DATABASE_NAME=lendsqr_db
 NODE_ENV=development
+ADJUTOR_API_KEY=your_api_key
+PORT= your_port
 ```
 
 Replace `your_username` and `your_password` with your MySQL credentials.
