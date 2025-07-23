@@ -39,6 +39,8 @@ Demo-credit powers a lending platform, enabling users to create accounts, manage
 - **TypeScript**: Version 4.x or higher
 - **dotenvx**: For environment variable management
 - A running MySQL database instance (local or remote)
+- **Jest**: For running tests
+
 
 ## Installation
 
