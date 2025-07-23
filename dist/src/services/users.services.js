@@ -13,9 +13,9 @@ class UserService {
     }
     async isBlacklisted(email) {
         try {
-            if (email == 'johntom@gmail.com') {
-                return false;
-            }
+            // if(email == 'johntom@gmail.com'){
+            //     return false;
+            // }
             const url = `${UserService.baseURL}/${email}`;
             const response = await axios_1.default.get(url, {
                 headers: {
