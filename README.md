@@ -322,6 +322,11 @@ The API supports user and transaction management with the following endpoints:
 
 **Authentication**: Endpoints requiring authentication use the `fakeAuth` middleware, which expects an `x-user-id` header with the user’s ID. Replace with a production-ready authentication system (e.g., JWT) for real-world use.
 
+## Postman
+
+[Postman Link](https://www.postman.com/technical-operator-65307819/workspace/projects/request/27781003-43f96b42-176d-4427-9fe7-32bfcbc2f78c?action=share&creator=27781003&ctx=documentation)
+
+
 ## Contributing
 
 Contributions are welcome! To contribute to Demo-credit:
