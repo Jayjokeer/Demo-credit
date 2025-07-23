@@ -205,7 +205,7 @@ The project is organized as follows:
 The Entity-Relationship (ER) Diagram illustrates the database schema, created using [DB Designer](https://app.dbdesigner.net), a web-based tool for designing MySQL schemas.
 
 ### ER Diagram
-([<img width="998" height="324" alt="image" src="https://github.com/user-attachments/assets/ecbed141-6e68-41ae-9b5c-02d4307fd81c" />](https://res.cloudinary.com/dyhekxbxi/image/upload/v1753263221/demo-credit_1_wxsz6k.png)
+[[<img width="998" height="324" alt="image" src="https://github.com/user-attachments/assets/ecbed141-6e68-41ae-9b5c-02d4307fd81c" />](https://res.cloudinary.com/dyhekxbxi/image/upload/v1753263221/demo-credit_1_wxsz6k.png)](https://res.cloudinary.com/dyhekxbxi/image/upload/v1753263221/demo-credit_1_wxsz6k.png)
 
 **Entities and Fields**:
 - **Users Table**:
