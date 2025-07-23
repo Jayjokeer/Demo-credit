@@ -348,7 +348,6 @@ Contributions are welcome! To contribute to Demo-credit:
    - Screenshots or GIFs for UI-related changes.
    - Tests (if applicable).
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for our code of conduct and submission guidelines.
 
 ## License
 
